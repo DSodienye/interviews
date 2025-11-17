@@ -1,0 +1,18 @@
+- Whats your experience with vue.js
+- Whats your experience with agile
+- What are mixins
+- What are the pros and cons of mixins
+- What are composables
+- Difference between composable and utility function
+- What are directive
+- Difference between `ref` and `reactive`
+- What is difference between **computed** and **watchers**
+- What are modifiers and v-model modifier
+- Where to use state manager
+- Difference between `PUT` and `PATCH`
+- What is http `200`, `204`, `400`, `401`
+- Difference between session storage and local storage
+- Explain the `this` in the various scope of a function
+- What is a Pure function, Recursive function
+- What is difference between primitives and non-primitives data type
+- Difference between Set and Map

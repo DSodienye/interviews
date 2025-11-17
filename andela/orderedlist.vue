@@ -28,7 +28,6 @@ function sort() {
   if (direction.value === 'up') list.value.sort((a, b) => a.localeCompare(b));
   else list.value.sort((a, b) => b.localeCompare(a));
 }
-
 function add() {
   if (!!input.value) {
     list.value.push(input.value);
@@ -36,7 +35,6 @@ function add() {
     input.value = '';
   }
 }
-
 function clear() {
   list.value = [];
   input.value = '';

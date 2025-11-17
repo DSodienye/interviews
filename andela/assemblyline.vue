@@ -8,7 +8,7 @@
     />
     <div data-testid="assembly-stage" v-for="(stage, sidx) of stages">
       <h3>{{ stage }}</h3>
-      <div v-for="(item, idx) of stageslist[`stage-${sidx}`]">
+      <div v-for="(item, idx) of list[`stage-${sidx}`]">
         <button
           data-testid="assembly-item"
           @contextmenu.prevent="move(sidx, idx, -1)"
