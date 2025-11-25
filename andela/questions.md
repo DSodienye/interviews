@@ -8,11 +8,14 @@
 - Difference between `ref` and `reactive`
 - What is difference between **computed** and **watchers**
 - What are modifiers and v-model modifier
-- Where to use state manager
-- Difference between `PUT` and `PATCH`
-- What is http `200`, `204`, `400`, `401`
+- When and where to use Vue state management
+- Explain the various vue life cycle hooks
+- What can cause data leak in a vue project
 - Difference between session storage and local storage
 - Explain the `this` in the various scope of a function
-- What is a Pure function, Recursive function
+- Difference between and Explain the `var`, `let` and `const` scope
+- Difference between `PUT` and `PATCH`
+- What is http `200`, `201`, `204`, `400`, `401`
+- What is a Closure, Pure function, Recursive function
 - What is difference between primitives and non-primitives data type
 - Difference between Set and Map
