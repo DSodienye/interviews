@@ -19,6 +19,9 @@ Worked in Agile teams using **Scrum**:
 * Close collaboration with product owners
   Focused on continuous delivery and quick iterations.
 
+**Steps of Agile**
+Planning - Tasks Creation - Task Assignment - Development - Review - Deployment
+
 ---
 
 ## **3. What are mixins?**
@@ -85,6 +88,7 @@ They replace mixins.
   * Uses reactive APIs (`ref`, `computed`, `watch`)
   * Returns reactive state
   * Works inside Vue reactivity
+
 * **Utility function:**
 
   * Pure JS function
@@ -208,13 +212,14 @@ Avoid it for small local state inside a single component.
 
 ---
 
-## **13. Explain HTTP 200, 204, 400, 401**
+## **13. Explain HTTP Status Codes**
 
-* **200 OK** → Request successful, response has data
-* **201 Created** → successfully led to the creation of the resource
-* **204 No Content** → Successful but no response body
-* **400 Bad Request** → Client error (invalid input)
-* **401 Unauthorized** → Authentication required or failed
+* **200 OK** - Request successful, response has data (GET)
+* **201 Created** - successfully led to the creation of the resource (POST)
+* **204 No Content** - Successful but no response body (DELETE)
+* **400 Bad Request** - Client error (invalid input)
+* **401 Unauthorized** - Authentication required or failed
+* **403 Forbidden** - Server understands the request but refuses to authorize it
 
 ---
 
@@ -224,6 +229,7 @@ Avoid it for small local state inside a single component.
 
   * Persistent (until cleared)
   * Shared across tabs
+
 * **sessionStorage:**
 
   * Clears when tab closes
@@ -254,7 +260,7 @@ const arrow = () => this.a // depends on outer scope
 
 ---
 
-## **16. What is Closure, Pure function, Recursive function?**
+## **16. What is Closure, Pure function, Recursive function, Hoisting?**
 
 ### **Closure**
 
@@ -269,7 +275,8 @@ function outer() {
 
 ### **Pure function**
 
-No side effects + same input → same output.
+Always returns the same result for the same input
+Does not modify anything outside itself (no side effects)
 
 ```js
 const add = (a,b) => a + b
@@ -283,6 +290,20 @@ Calls itself.
 function factorial(n){
   return n <= 1 ? 1 : n * factorial(n-1)
 }
+```
+
+### **Hoisting**
+Hoisting means JavaScript moves variable and function declarations to the top of their scope before execution.
+
+```js
+console.log(x)
+var x = 5
+```
+Internally JavaScript sees it as:
+```js
+var x
+console.log(x) // undefined
+x = 5
 ```
 
 ---
@@ -299,7 +320,7 @@ function factorial(n){
 
 ---
 
-## **18. Difference between Set and Map**
+## **18. Difference between Set and Map and Object**
 
 ### **Set:**
 
@@ -315,17 +336,31 @@ new Set([1,1,2]) // {1,2}
 
 * Stores key → value pairs
 * Keys can be any type
-* Better for lookups
+* In-Built methods like (get, set, has)
+* Insertion is Ordered
 
 ```js
 const map = new Map()
 map.set('name', 'Victor')
 ```
+
+### **Object:**
+
+* Stores key → value pairs
+* Keys are only String/Symbol
+* Better for lookups
+* Order is not determined
+
+```js
+const obj = new Object()
+obj.name = 'Victor'
+```
+
 Here are **concise, well-explained, interview-ready answers** for the next questions:
 
 ---
 
-# ✅ **1. Difference between `var`, `let`, and `const` (and their scopes)**
+## **19. Difference between `var`, `let`, and `const` (and their scopes)**
 
 ### **`var`**
 
@@ -375,7 +410,7 @@ user.name = "Victor" // allowed
 
 ### **Summary Table**
 
-| Feature       | `var`             | `let`       | `const`     |
+| Feature       | `var`           | `let`     | `const`   |
 | ------------- | ----------------- | ----------- | ----------- |
 | Scope         | function          | block       | block       |
 | Hoisting      | yes (initialized) | yes (TDZ)   | yes (TDZ)   |
@@ -384,7 +419,7 @@ user.name = "Victor" // allowed
 
 ---
 
-# ✅ **2. Explain the various Vue lifecycle hooks (Vue 3)**
+## **20. Explain the various Vue lifecycle hooks (Vue 3)**
 
 ### Hooks inside `setup()`:
 
@@ -449,9 +484,9 @@ onUnmounted
 
 ---
 
-# ✅ **3. What can cause a data leak in a Vue project?**
+## **21 What can cause a data leak in a Vue project?**
 
-### **1. Not cleaning up side effects**
+### **i. Not cleaning up side effects**
 
 Leaving listeners, intervals, or subscriptions running after component unmount.
 
@@ -469,7 +504,7 @@ If not cleaned — ❗ memory leak.
 
 ---
 
-### **2. Long-lived reactive references**
+### **ii. Long-lived reactive references**
 
 Storing large objects in global reactive stores or `ref` that never get cleared.
 
@@ -478,7 +513,7 @@ Keeping huge API data inside Pinia even when not needed.
 
 ---
 
-### **3. Using watchers incorrectly**
+### **iii. Using watchers incorrectly**
 
 Creating watchers that run indefinitely or watch deep objects without cleanup.
 
@@ -488,25 +523,25 @@ watch(() => bigObject, fn, { deep: true }) // heavy
 
 ---
 
-### **4. Large DOM updates or uncontrolled lists**
+### **iv. Large DOM updates or uncontrolled lists**
 
 Rendering thousands of items without virtualization.
 
 ---
 
-### **5. Circular references in data**
+### **v. Circular references in data**
 
 Vue's reactivity wraps objects; circular nested objects can grow memory usage.
 
 ---
 
-### **6. Event bus misuse (Vue 2)**
+### **vi. Event bus misuse (Vue 2)**
 
 Listeners never removed → memory leak.
 
 ---
 
-### **7. Unclosed WebSockets / API streams**
+### **vii. Unclosed WebSockets / API streams**
 
 Forgetting to close:
 
@@ -516,6 +551,11 @@ Forgetting to close:
 
 ---
 
-### **8. Global variables inside composables**
+### **viii. Global variables inside composables**
 
 If a composable stores values outside `setup()`, the data stays in memory for the application's lifetime.
+
+## **22 Difference between `justify-item` and `align-item`
+
+**justify-items:** Aligns items along the inline axis (horizontal).	
+**align-items:** Aligns items along the block axis (vertical).
