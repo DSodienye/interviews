@@ -40,8 +40,9 @@ function add() {
 function move(sidx, idx, dir = 1) {
   list.value[`stage-${sidx}`] ??= [];
   list.value[`stage-${sidx + dir}`] ??= [];
-  const [itm] = list.value[`stage-${sidx}`].splice(idx, 1);
-  list.value[`stage-${sidx + dir}`][dir === -1 ? 'push' : 'unshift'](itm);
+  list.value[`stage-${sidx + dir}`][dir === -1 ? 'push' : 'unshift'](
+    list.value[`stage-${sidx}`].splice(idx, 1)[0],
+  );
 }
 </script>
 
@@ -123,18 +124,20 @@ const items = ref([]);
 
 function add() {
   const trimmed = input.value.trim();
-  input.value = '';
-  if (!!trimmed && !items.value.includes(trimmed))
+  if (!!trimmed && !items.value.includes(trimmed)) {
     items.value.push(trimmed);
+    input.value = '';
+  }
 }
 
 function remove() {
   const trimmed = input.value.trim();
-  const target = items.value.indexOf(trimmed);
-  input.value = '';
-  if (items.value.length > 0)
-    items.value.pop();
-  if (target > -1) items.splice(target, 1);
+  if (!!trimmed && items.value.length > 0) {
+    const idx = items.value.indexOf(trimmed);
+    if (idx > -1) items.value.splice(idx, 1);
+    else items.value.pop();
+    input.value = '';
+  }
 }
 
 function clear() {

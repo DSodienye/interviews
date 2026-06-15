@@ -24,13 +24,15 @@ function add() {
     input.value = '';
   }
 }
-
 function remove() {
-  if (items.value.length > 0) {
-    items.value.pop();
+  const trimmed = input.value.trim();
+  if (!!trimmed && items.value.length > 0) {
+    const idx = items.value.indexOf(trimmed);
+    if (idx > -1) items.value.splice(idx, 1);
+    else items.value.pop();
+    input.value = '';
   }
 }
-
 function clear() {
   if (items.value.length > 0) {
     items.value = [];

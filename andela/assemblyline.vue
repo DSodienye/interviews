@@ -37,8 +37,9 @@ function add() {
 function move(sidx, idx, dir = 1) {
   list.value[`stage-${sidx}`] ??= [];
   list.value[`stage-${sidx + dir}`] ??= [];
-  const [itm] = list.value[`stage-${sidx}`].splice(idx, 1);
-  list.value[`stage-${sidx + dir}`][dir === -1 ? 'push' : 'unshift'](itm);
+  list.value[`stage-${sidx + dir}`][dir === -1 ? 'push' : 'unshift'](
+    list.value[`stage-${sidx}`].splice(idx, 1)[0],
+  );
 }
 </script>
 
